@@ -1,0 +1,56 @@
+# Fábrica do DanRun: a cada mudança no código, o GitHub monta o app (.apk)
+# e publica em "Releases" para baixar direto no celular.
+name: Montar DanRun
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Pegar a chave de assinatura no cofre
+        env:
+          DANRUN_KEYSTORE: ${{ secrets.DANRUN_KEYSTORE }}
+        run: |
+          if [ -n "$DANRUN_KEYSTORE" ]; then
+            echo "$DANRUN_KEYSTORE" | base64 -d > danrun.keystore
+            echo "Chave encontrada."
+          else
+            echo "::warning::Sem chave no cofre: o APK sai com chave temporária."
+          fi
+
+      - name: Montar o APK
+        env:
+          DANRUN_KEYSTORE_PASSWORD: ${{ secrets.DANRUN_KEYSTORE_PASSWORD }}
+        run: ./gradlew assembleDanrunRelease --stacktrace
+
+      - name: Renomear APK
+        run: |
+          mkdir -p saida
+          cp build/outputs/apk/danrun/release/*.apk saida/DanRun-1.0.${{ github.run_number }}.apk
+          ls -la saida
+
+      - name: Publicar versão
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: danrun-1.0.${{ github.run_number }}
+          name: DanRun 1.0.${{ github.run_number }}
+          body: |
+            Para instalar: abra este link no celular, toque no arquivo DanRun-1.0.${{ github.run_number }}.apk e depois em "Instalar".
+          files: saida/*.apk
+          make_latest: true

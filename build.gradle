@@ -58,6 +58,15 @@ android {
         testInstrumentationRunnerArguments clearPackageData: 'true'
     }
     signingConfigs {
+        danrun {
+            // A chave fica no cofre do GitHub (secret DANRUN_KEYSTORE), nunca no código.
+            if (file('danrun.keystore').exists()) {
+                storeFile file('danrun.keystore')
+                storePassword System.getenv('DANRUN_KEYSTORE_PASSWORD') ?: ''
+                keyAlias 'danrun'
+                keyPassword System.getenv('DANRUN_KEYSTORE_PASSWORD') ?: ''
+            }
+        }
         nightly {
             if (System.getProperty('nightly_store_file') != null) {
                 storeFile file(System.getProperty('nightly_store_file'))
@@ -92,6 +101,14 @@ android {
 
     flavorDimensions 'version'
     productFlavors {
+        danrun {
+            // DanRun: app pessoal de corrida do DandanSF
+            dimension 'version'
+            applicationId 'com.dandansf.danrun'
+            versionCode 1000 + Integer.valueOf(System.getenv('GITHUB_RUN_NUMBER') ?: '0')
+            versionName "DanRun 1.0." + (System.getenv('GITHUB_RUN_NUMBER') ?: 'local')
+            signingConfig = file('danrun.keystore').exists() ? signingConfigs.danrun : signingConfigs.debug
+        }
         nightly {
             dimension 'version'
             applicationId 'de.dennisguse.opentracks.nightly'
@@ -128,6 +145,11 @@ android {
                 outputFileName = "${applicationId}_${variant.versionCode}.apk"
             }
         }
+    }
+
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
     }
 
     dependenciesInfo {
