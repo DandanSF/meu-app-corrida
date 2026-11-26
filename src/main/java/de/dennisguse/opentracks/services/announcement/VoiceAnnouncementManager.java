@@ -71,6 +71,8 @@ public class VoiceAnnouncementManager implements SharedPreferences.OnSharedPrefe
     private IntervalStatistics intervalStatistics;
     private Distance intervalDistance;
 
+    private final DanRunPaceAlert paceAlert = new DanRunPaceAlert();
+
     public VoiceAnnouncementManager(@NonNull Context context) {
         this.context = context;
         contentProviderUtils = new ContentProviderUtils(context);
@@ -81,6 +83,7 @@ public class VoiceAnnouncementManager implements SharedPreferences.OnSharedPrefe
     public void start(@Nullable TrackStatistics trackStatistics) {
         voiceAnnouncement = new TTSManager(context);
         voiceAnnouncement.start();
+        paceAlert.reset();
         update(trackStatistics);
     }
 
@@ -137,6 +140,12 @@ public class VoiceAnnouncementManager implements SharedPreferences.OnSharedPrefe
 
         if (announce) {
             voiceAnnouncement.speak(createAnnouncement(track, sensorDataSet));
+            return;
+        }
+
+        String paceMessage = paceAlert.check(trackStatistics);
+        if (paceMessage != null) {
+            voiceAnnouncement.speak(paceMessage);
         }
     }
 

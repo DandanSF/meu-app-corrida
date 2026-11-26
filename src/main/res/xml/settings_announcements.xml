@@ -17,6 +17,22 @@
         android:title="@string/menu_voice_rate"
         app:useSimpleSummaryProvider="true" />
 
+    <PreferenceCategory android:title="@string/danrun_pace_category">
+        <EditTextPreference
+            android:key="@string/danrun_target_pace_key"
+            android:title="@string/danrun_target_pace_title"
+            android:dialogMessage="@string/danrun_target_pace_dialog"
+            android:defaultValue=""
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:key="@string/danrun_pace_tolerance_key"
+            android:title="@string/danrun_pace_tolerance_title"
+            android:defaultValue="15"
+            android:entries="@array/danrun_pace_tolerance_entries"
+            android:entryValues="@array/danrun_pace_tolerance_values"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/settings_announcements_idle_category_title">
         <SwitchPreferenceCompat
             android:defaultValue="@bool/voice_announce_idle_default"

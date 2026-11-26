@@ -50,6 +50,9 @@ limitations under the License.
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <!--    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />-->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- DanRun: internet só para baixar as imagens do mapa -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-permission
@@ -352,6 +355,7 @@ limitations under the License.
         <activity android:name=".TrackEditActivity" />
 
         <activity android:name=".ui.aggregatedStatistics.AggregatedStatisticsActivity" />
+        <activity android:name=".ui.records.DanRunRecordsActivity" />
 
         <activity android:name=".io.file.importer.DirectoryChooserActivity$ExportDirectoryChooserActivity" />
         <activity android:name=".io.file.importer.DirectoryChooserActivity$ExportDirectoryChooserOneFileActivity" />

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Textos do DanRun -->
+<resources>
+    <string name="danrun_target_pace_key" translatable="false">danrun_target_pace</string>
+    <string name="danrun_pace_tolerance_key" translatable="false">danrun_pace_tolerance</string>
+
+    <string name="danrun_map_tab" translatable="false">Mapa</string>
+    <string name="danrun_pace_category" translatable="false">Ritmo-alvo (DanRun)</string>
+    <string name="danrun_target_pace_title" translatable="false">Ritmo-alvo (min/km)</string>
+    <string name="danrun_target_pace_dialog" translatable="false">Digite o pace que você quer manter, por exemplo 6:00. Deixe vazio para desligar o alerta.</string>
+    <string name="danrun_pace_tolerance_title" translatable="false">Margem de tolerância</string>
+
+    <string name="danrun_records_menu" translatable="false">Recordes pessoais</string>
+    <string name="danrun_records_title" translatable="false">Meus recordes</string>
+
+    <string-array name="danrun_pace_tolerance_entries" translatable="false">
+        <item>± 10 segundos</item>
+        <item>± 15 segundos</item>
+        <item>± 20 segundos</item>
+        <item>± 30 segundos</item>
+    </string-array>
+    <string-array name="danrun_pace_tolerance_values" translatable="false">
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+</resources>

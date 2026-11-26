@@ -16,6 +16,11 @@ limitations under the License.
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/track_list_danrun_records"
+        android:icon="@drawable/ic_statistics_24dp"
+        android:title="@string/danrun_records_menu"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/track_list_markers"
         android:icon="@drawable/ic_marker_show_24dp"
         android:title="@string/menu_markers"

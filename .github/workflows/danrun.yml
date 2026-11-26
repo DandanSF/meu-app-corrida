@@ -23,15 +23,12 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Pegar a chave de assinatura no cofre
+      - name: Conferir a senha da assinatura
         env:
-          DANRUN_KEYSTORE: ${{ secrets.DANRUN_KEYSTORE }}
+          DANRUN_KEYSTORE_PASSWORD: ${{ secrets.DANRUN_KEYSTORE_PASSWORD }}
         run: |
-          if [ -n "$DANRUN_KEYSTORE" ]; then
-            echo "$DANRUN_KEYSTORE" | base64 -d > danrun.keystore
-            echo "Chave encontrada."
-          else
-            echo "::warning::Sem chave no cofre: o APK sai com chave temporária."
+          if [ -z "$DANRUN_KEYSTORE_PASSWORD" ]; then
+            echo "::warning::Senha DANRUN_KEYSTORE_PASSWORD não cadastrada: o APK sai com assinatura temporária."
           fi
 
       - name: Montar o APK

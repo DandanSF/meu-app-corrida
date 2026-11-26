@@ -59,9 +59,9 @@ android {
     }
     signingConfigs {
         danrun {
-            // A chave fica no cofre do GitHub (secret DANRUN_KEYSTORE), nunca no código.
-            if (file('danrun.keystore').exists()) {
-                storeFile file('danrun.keystore')
+            // A chave é protegida por senha; a senha fica só no cofre do GitHub (secret DANRUN_KEYSTORE_PASSWORD).
+            if (System.getenv('DANRUN_KEYSTORE_PASSWORD')) {
+                storeFile file('keys/danrun-signing.p12')
                 storePassword System.getenv('DANRUN_KEYSTORE_PASSWORD') ?: ''
                 keyAlias 'danrun'
                 keyPassword System.getenv('DANRUN_KEYSTORE_PASSWORD') ?: ''
@@ -107,7 +107,7 @@ android {
             applicationId 'com.dandansf.danrun'
             versionCode 1000 + Integer.valueOf(System.getenv('GITHUB_RUN_NUMBER') ?: '0')
             versionName "DanRun 1.0." + (System.getenv('GITHUB_RUN_NUMBER') ?: 'local')
-            signingConfig = file('danrun.keystore').exists() ? signingConfigs.danrun : signingConfigs.debug
+            signingConfig = System.getenv('DANRUN_KEYSTORE_PASSWORD') ? signingConfigs.danrun : signingConfigs.debug
         }
         nightly {
             dimension 'version'
@@ -174,6 +174,9 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation 'androidx.mediarouter:mediarouter:1.8.1'
     implementation 'androidx.core:core-location-altitude:1.0.0-alpha03'
+
+    // DanRun: mapa OpenStreetMap dentro do app
+    implementation 'org.osmdroid:osmdroid-android:6.1.20'
 
     androidTestImplementation 'androidx.test:core:1.7.0'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'

@@ -44,6 +44,7 @@ import de.dennisguse.opentracks.services.TrackRecordingServiceConnection;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
 import de.dennisguse.opentracks.settings.SettingsActivity;
 import de.dennisguse.opentracks.ui.intervals.IntervalsFragment;
+import de.dennisguse.opentracks.ui.map.DanRunMapFragment;
 import de.dennisguse.opentracks.ui.markers.MarkerEditActivity;
 import de.dennisguse.opentracks.ui.markers.MarkerListActivity;
 import de.dennisguse.opentracks.ui.util.ActivityUtils;
@@ -342,9 +343,10 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
         public Fragment createFragment(int position) {
             return switch (position) {
                 case 0 -> StatisticsRecordingFragment.newInstance();
-                case 1 -> IntervalsFragment.newInstance(trackId, false);
-                case 2 -> ChartFragment.newInstance(false);
-                case 3 -> ChartFragment.newInstance(true);
+                case 1 -> DanRunMapFragment.newInstance(true);
+                case 2 -> IntervalsFragment.newInstance(trackId, false);
+                case 3 -> ChartFragment.newInstance(false);
+                case 4 -> ChartFragment.newInstance(true);
                 default ->
                         throw new RuntimeException("There isn't Fragment associated with the position: " + position);
             };
@@ -352,15 +354,16 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
 
         @Override
         public int getItemCount() {
-            return 4;
+            return 5;
         }
 
         public CharSequence getPageTitle(int position) {
             return switch (position) {
                 case 0 -> getString(R.string.track_detail_stats_tab);
-                case 1 -> getString(R.string.track_detail_intervals_tab);
-                case 2 -> getString(R.string.settings_chart_by_time);
-                case 3 -> getString(R.string.settings_chart_by_distance);
+                case 1 -> getString(R.string.danrun_map_tab);
+                case 2 -> getString(R.string.track_detail_intervals_tab);
+                case 3 -> getString(R.string.settings_chart_by_time);
+                case 4 -> getString(R.string.settings_chart_by_distance);
                 default ->
                         throw new RuntimeException("There isn't Fragment associated with the position: " + position);
             };
