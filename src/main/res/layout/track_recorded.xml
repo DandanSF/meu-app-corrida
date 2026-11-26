@@ -25,8 +25,9 @@ limitations under the License.
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/track_detail_activity_tablayout"
+            style="@style/DanRunTabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="56dp" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/track_detail_activity_view_pager"

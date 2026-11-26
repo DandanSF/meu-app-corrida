@@ -4,7 +4,11 @@
     <string name="danrun_target_pace_key" translatable="false">danrun_target_pace</string>
     <string name="danrun_pace_tolerance_key" translatable="false">danrun_pace_tolerance</string>
 
-    <string name="danrun_map_tab" translatable="false">Mapa</string>
+    <string name="danrun_map_tab" translatable="false">🗺️ Mapa</string>
+    <string name="danrun_stats_tab" translatable="false">📊 Dados</string>
+    <string name="danrun_splits_tab" translatable="false">⏱️ Parciais</string>
+    <string name="danrun_chart_time_tab" translatable="false">📈 Por tempo</string>
+    <string name="danrun_chart_distance_tab" translatable="false">📈 Por km</string>
     <string name="danrun_pace_category" translatable="false">Ritmo-alvo (DanRun)</string>
     <string name="danrun_target_pace_title" translatable="false">Ritmo-alvo (min/km)</string>
     <string name="danrun_target_pace_dialog" translatable="false">Digite o pace que você quer manter, por exemplo 6:00. Deixe vazio para desligar o alerta.</string>

@@ -276,11 +276,11 @@ public class TrackRecordedActivity extends AbstractTrackDeleteActivity implement
 
         public CharSequence getPageTitle(int position) {
             return switch (position) {
-                case 0 -> getString(R.string.track_detail_stats_tab);
+                case 0 -> getString(R.string.danrun_stats_tab);
                 case 1 -> getString(R.string.danrun_map_tab);
-                case 2 -> getString(R.string.track_detail_intervals_tab);
-                case 3 -> getString(R.string.settings_chart_by_time);
-                case 4 -> getString(R.string.settings_chart_by_distance);
+                case 2 -> getString(R.string.danrun_splits_tab);
+                case 3 -> getString(R.string.danrun_chart_time_tab);
+                case 4 -> getString(R.string.danrun_chart_distance_tab);
                 default ->
                         throw new RuntimeException("There isn't Fragment associated with the position: " + position);
             };
