@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Padrões do DanRun (diferentes do OpenTracks original) -->
+<resources>
+    <!-- Aviso de voz a cada 1 km já ligado -->
+    <string name="voice_announcement_distance_default" translatable="false">1</string>
+    <string-array name="voice_announcement_distance_values">
+        <item>@string/announcement_off</item>
+        <item>0.1</item>
+        <item>0.2</item>
+        <item>0.5</item>
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+        <item>50</item>
+    </string-array>
+
+    <!-- Atividade padrão: corrida -->
+    <string name="default_activity_default" translatable="false">@string/activity_type_running</string>
+</resources>

@@ -21,6 +21,7 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +76,10 @@ public class DanRunMapFragment extends Fragment implements TrackDataHub.Listener
 
         Configuration.getInstance().load(requireContext(), PreferenceManager.getDefaultSharedPreferences(requireContext()));
         Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
+        // Guarda as imagens do mapa na pasta interna do app (não precisa de permissão extra)
+        File base = new File(requireContext().getCacheDir(), "osmdroid");
+        Configuration.getInstance().setOsmdroidBasePath(base);
+        Configuration.getInstance().setOsmdroidTileCache(new File(base, "tiles"));
 
         mapView = new MapView(requireContext());
         mapView.setTileSource(TileSourceFactory.MAPNIK);

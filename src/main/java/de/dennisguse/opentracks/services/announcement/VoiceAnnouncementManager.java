@@ -18,6 +18,7 @@ package de.dennisguse.opentracks.services.announcement;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.data.models.TrackPoint;
 import de.dennisguse.opentracks.sensors.sensorData.SensorDataSet;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
+import de.dennisguse.opentracks.settings.UnitSystem;
 import de.dennisguse.opentracks.stats.SensorStatistics;
 import de.dennisguse.opentracks.stats.TrackStatistics;
 import de.dennisguse.opentracks.ui.intervals.IntervalStatistics;
@@ -163,6 +165,11 @@ public class VoiceAnnouncementManager implements SharedPreferences.OnSharedPrefe
         SensorStatistics sensorStatistics = null;
         if (track.getId() != null) {
             sensorStatistics = contentProviderUtils.getSensorStats(track.getId());
+        }
+
+        // DanRun: em km, usa o aviso curto em português ("2 quilômetros. Pace do quilômetro: 5 e 42...")
+        if (PreferencesUtils.getUnitSystem() == UnitSystem.METRIC && !PreferencesUtils.isReportSpeed(track)) {
+            return new SpannableString(DanRunKmAnnouncement.build(track.getTrackStatistics(), lastInterval));
         }
 
         return VoiceAnnouncementUtils.createStatistics(context, track, sensorDataSet, PreferencesUtils.getUnitSystem(), PreferencesUtils.isReportSpeed(track), lastInterval, sensorStatistics);
