@@ -1,6 +1,7 @@
 package de.dennisguse.opentracks.ui.map;
 
 import android.graphics.Color;
+import android.graphics.ColorMatrixColorFilter;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +21,6 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
-import org.osmdroid.views.overlay.TilesOverlay;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -86,7 +86,11 @@ public class DanRunMapFragment extends Fragment implements TrackDataHub.Listener
         mapView.setTileSource(TileSourceFactory.MAPNIK);
         mapView.setMultiTouchControls(true);
         // Mapa escuro, combinando com o tema do DanRun
-        mapView.getOverlayManager().getTilesOverlay().setColorFilter(TilesOverlay.INVERTED_COLORS);
+        mapView.getOverlayManager().getTilesOverlay().setColorFilter(new ColorMatrixColorFilter(new float[]{
+                -0.85f, 0, 0, 0, 230,
+                0, -0.85f, 0, 0, 232,
+                0, 0, -0.85f, 0, 238,
+                0, 0, 0, 1, 0}));
         mapView.getZoomController().setVisibility(org.osmdroid.views.CustomZoomButtonsController.Visibility.NEVER);
         mapView.getController().setZoom(16.0);
         mapView.setOnTouchListener((v, event) -> {
