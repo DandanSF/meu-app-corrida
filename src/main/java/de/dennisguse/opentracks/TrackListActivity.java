@@ -319,6 +319,8 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
         Cursor tracks = new ContentProviderUtils(this).searchTracks(searchQuery);
 
         adapter.swapData(tracks);
+
+        de.dennisguse.opentracks.ui.DanRunWeekSummary.update(this, viewBinding.danrunWeekDistance, viewBinding.danrunWeekDetails, viewBinding.danrunMonthDetails);
     }
 
     @Override

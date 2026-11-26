@@ -9,14 +9,14 @@
     <path
         android:pathData="M34,74 C34,60 48,62 52,54 C56,46 44,40 52,34 C58,30 66,36 72,34"
         android:strokeWidth="6"
-        android:strokeColor="#FFC000"
+        android:strokeColor="#FF6A13"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:fillColor="#00000000" />
     <!-- largada -->
     <path
         android:pathData="M34,74 m-6,0 a6,6 0,1 1,12 0 a6,6 0,1 1,-12 0"
-        android:fillColor="#FFFFFF" />
+        android:fillColor="#C6FF00" />
     <!-- mastro da bandeira -->
     <path
         android:pathData="M72,22 L72,40"
@@ -26,5 +26,5 @@
     <!-- bandeira -->
     <path
         android:pathData="M72,22 L84,26 L72,30 Z"
-        android:fillColor="#FFFFFF" />
+        android:fillColor="#C6FF00" />
 </vector>

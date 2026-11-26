@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema DanRun (substitui o tema colorido do OpenTracks) -->
+    <style name="DayNightColorTheme" parent="DayNightDynamicTheme">
+        <item name="colorPrimary">@color/danrun_orange</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorPrimaryContainer">@color/danrun_orange_dark</item>
+        <item name="colorOnPrimaryContainer">#FFC4A0</item>
+        <item name="colorSecondary">@color/danrun_lime</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="colorSecondaryContainer">@color/danrun_lime_dark</item>
+        <item name="colorOnSecondaryContainer">#E6FF85</item>
+        <item name="colorTertiary">#00E5FF</item>
+
+        <item name="android:windowBackground">@color/danrun_bg</item>
+        <item name="android:colorBackground">@color/danrun_bg</item>
+        <item name="colorSurface">@color/danrun_bg</item>
+        <item name="colorSurfaceDim">@color/danrun_bg</item>
+        <item name="colorSurfaceBright">@color/danrun_surface_high</item>
+        <item name="colorSurfaceContainerLowest">@color/danrun_bg</item>
+        <item name="colorSurfaceContainerLow">#14171C</item>
+        <item name="colorSurfaceContainer">@color/danrun_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/danrun_surface_high</item>
+        <item name="colorSurfaceContainerHighest">#282D35</item>
+        <item name="colorOnSurface">@color/danrun_text</item>
+        <item name="colorOnBackground">@color/danrun_text</item>
+        <item name="colorOnSurfaceVariant">@color/danrun_text_muted</item>
+        <item name="colorOutline">@color/danrun_stroke</item>
+        <item name="colorOutlineVariant">@color/danrun_stroke</item>
+
+        <item name="android:statusBarColor">@color/danrun_bg</item>
+        <item name="android:navigationBarColor">@color/danrun_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+
+    <style name="Widget.OpenTracks.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="fabCustomSize">68dp</item>
+        <item name="backgroundTint">@color/danrun_orange</item>
+        <item name="rippleColor">@color/danrun_lime</item>
+    </style>
+</resources>

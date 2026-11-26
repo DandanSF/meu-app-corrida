@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Paleta DanRun: grafite + laranja neon + verde-limão -->
 <resources>
-    <color name="ic_launcher_background">#0B1F3A</color>
+    <color name="danrun_bg">#0F1115</color>
+    <color name="danrun_surface">#181B21</color>
+    <color name="danrun_surface_high">#20242B</color>
+    <color name="danrun_stroke">#2A3039</color>
+    <color name="danrun_orange">#FF6A13</color>
+    <color name="danrun_orange_dark">#3A1A08</color>
+    <color name="danrun_lime">#C6FF00</color>
+    <color name="danrun_lime_dark">#2A3300</color>
+    <color name="danrun_text">#F4F5F7</color>
+    <color name="danrun_text_muted">#9AA3AF</color>
+
+    <color name="ic_launcher_background">#0F1115</color>
+    <color name="splashscreen_background">#0F1115</color>
+
+    <!-- cor "da marca" usada em vários pontos do app -->
+    <color name="opentracks">#FF6A13</color>
+    <color name="opentracks_transparent">#40FF6A13</color>
+
+    <!-- gráficos -->
+    <color name="chart_pace_border">#FFFF6A13</color>
+    <color name="chart_pace_fill">#40FF6A13</color>
+    <color name="chart_speed_border">#FFFF6A13</color>
+    <color name="chart_speed_fill">#40FF6A13</color>
+    <color name="chart_altitude_border">#FFC6FF00</color>
+    <color name="chart_altitude_fill">#30C6FF00</color>
+    <color name="stats_separator">#332A3039</color>
 </resources>

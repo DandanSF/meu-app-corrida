@@ -1,3 +1,33 @@
+# 🏃 DanRun
+
+**Meu app de corrida pessoal** — tema escuro com laranja neon, mapa ao vivo, aviso de voz a cada km, alerta de ritmo-alvo e recordes pessoais.
+
+## 📲 Baixar no celular
+
+### 👉 [**BAIXAR DANRUN (versão mais nova)**](https://github.com/DandanSF/meu-app-corrida/releases/latest/download/DanRun.apk)
+
+Toque no link acima pelo celular Android → abra o arquivo → **Instalar**.
+Na primeira vez, o Android pede para permitir "instalar apps desconhecidos" pelo navegador.
+
+## O que o DanRun faz
+
+| | |
+|---|---|
+| 🗺️ **Mapa ao vivo** | Trajeto desenhado em laranja neon sobre mapa escuro, durante e depois da corrida |
+| 🔊 **Aviso a cada km** | "2 quilômetros. Pace do quilômetro: 5 e 42. Pace médio: 5 e 50. Tempo: 11 minutos..." |
+| 🎯 **Ritmo-alvo** | Defina seu pace (ex.: 6:00) e ele avisa "Acelere" ou "Segura o ritmo" |
+| 🏆 **Recordes pessoais** | Melhores tempos de 400 m, 1 km, 5 km, 10 km, meia e maratona |
+| 📊 **Esta semana** | Painel na tela inicial com km, corridas, tempo e pace médio da semana e do mês |
+| 📈 **Gráficos e parciais** | Pace, altimetria e tabela por km |
+| 🔒 **Privacidade** | Suas corridas ficam só no seu celular; internet só para as imagens do mapa |
+
+Baseado no [OpenTracks](https://codeberg.org/OpenTracksApp/OpenTracks) (licença Apache 2.0).
+
+---
+
+<details>
+<summary>README original do OpenTracks</summary>
+
 # <img src="drawable-svg/LOGO.svg" alt="OpenTracks logo" height="40"></img> OpenTracks: a sport tracker
 
 _OpenTracks_ is a sport tracking application that completely respects your privacy.
@@ -201,3 +231,6 @@ Artwork, logos and user interface remained more or less unchanged.
 More information about _Google My Tracks_:
 * [Wikipedia page](https://en.wikipedia.org/wiki/MyTracks)
 * [Google code archive](https://code.google.com/archive/p/mytracks/)
+
+
+</details>

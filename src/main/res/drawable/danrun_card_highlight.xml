@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Card de destaque com degradê laranja -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="12dp" android:insetRight="12dp" android:insetTop="6dp" android:insetBottom="6dp">
+    <shape android:shape="rectangle">
+        <gradient
+            android:angle="315"
+            android:startColor="#FF6A13"
+            android:endColor="#FF2E63" />
+        <corners android:radius="22dp" />
+    </shape>
+</inset>

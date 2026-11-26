@@ -40,6 +40,7 @@ jobs:
         run: |
           mkdir -p saida
           cp build/outputs/apk/danrun/release/*.apk saida/DanRun-1.0.${{ github.run_number }}.apk
+          cp build/outputs/apk/danrun/release/*.apk saida/DanRun.apk
           ls -la saida
 
       - name: Publicar versão
@@ -48,6 +49,6 @@ jobs:
           tag_name: danrun-1.0.${{ github.run_number }}
           name: DanRun 1.0.${{ github.run_number }}
           body: |
-            Para instalar: abra este link no celular, toque no arquivo DanRun-1.0.${{ github.run_number }}.apk e depois em "Instalar".
+            Para instalar: no celular, toque em **DanRun.apk** logo abaixo e depois em "Instalar".
           files: saida/*.apk
           make_latest: true

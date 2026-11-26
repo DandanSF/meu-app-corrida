@@ -1,5 +1,6 @@
 package de.dennisguse.opentracks.ui.records;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Location;
 import android.os.Bundle;
@@ -51,9 +52,11 @@ public class DanRunRecordsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        de.dennisguse.opentracks.settings.PreferencesUtils.applyTheme(this);
         super.onCreate(savedInstanceState);
 
         ScrollView scroll = new ScrollView(this);
+        scroll.setBackgroundColor(Color.parseColor("#0F1115"));
         scroll.setFitsSystemWindows(true);
         list = new LinearLayout(this);
         list.setOrientation(LinearLayout.VERTICAL);
@@ -160,7 +163,7 @@ public class DanRunRecordsActivity extends AppCompatActivity {
     private void show(Best[] bests) {
         if (isFinishing() || isDestroyed()) return;
         list.removeAllViews();
-        addTitle(getString(R.string.danrun_records_title));
+        addTitle("🏆 " + getString(R.string.danrun_records_title));
 
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("pt", "BR")).withZone(ZoneId.systemDefault());
         boolean any = false;
@@ -169,15 +172,38 @@ public class DanRunRecordsActivity extends AppCompatActivity {
             if (b.seconds == Double.MAX_VALUE) continue;
             any = true;
             double paceS = b.seconds / (DISTANCES_M[i] / 1000.0);
-            addText(LABELS[i], 18, true);
-            addText("Tempo: " + formatTime(b.seconds) + "   •   Pace: " + formatPace(paceS) + " /km", 16, false);
-            String when = (b.trackName != null ? b.trackName : "") + (b.date != null ? " — " + fmt.format(b.date) : "");
-            addText(when, 13, false);
-            addSpacer();
+
+            LinearLayout card = new LinearLayout(this);
+            card.setOrientation(LinearLayout.VERTICAL);
+            card.setBackgroundResource(R.drawable.danrun_card);
+            int p = dp(20);
+            card.setPadding(p, dp(16), p, dp(16));
+
+            TextView label = text(card, LABELS[i].toUpperCase(new Locale("pt", "BR")), 13, true);
+            label.setTextColor(Color.parseColor("#FF6A13"));
+            label.setLetterSpacing(0.1f);
+            TextView time = text(card, formatTime(b.seconds), 34, true);
+            time.setTextColor(Color.parseColor("#F4F5F7"));
+            TextView pace = text(card, formatPace(paceS) + " /km", 16, true);
+            pace.setTextColor(Color.parseColor("#C6FF00"));
+            String when = (b.trackName != null ? b.trackName : "") + (b.date != null ? "  •  " + fmt.format(b.date) : "");
+            TextView whenView = text(card, when, 13, false);
+            whenView.setTextColor(Color.parseColor("#9AA3AF"));
+
+            list.addView(card);
         }
         if (!any) {
             addText("Ainda não há corridas suficientes. Grave uma corrida e volte aqui!", 16, false);
         }
+    }
+
+    private TextView text(LinearLayout parent, String value, int sp, boolean bold) {
+        TextView tv = new TextView(this);
+        tv.setText(value);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp);
+        if (bold) tv.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        parent.addView(tv);
+        return tv;
     }
 
     private static String formatTime(double seconds) {
@@ -195,7 +221,8 @@ public class DanRunRecordsActivity extends AppCompatActivity {
     }
 
     private void addTitle(String text) {
-        TextView tv = addText(text, 24, true);
+        TextView tv = addText(text, 26, true);
+        tv.setTextColor(Color.parseColor("#F4F5F7"));
         tv.setGravity(Gravity.START);
         addSpacer();
     }

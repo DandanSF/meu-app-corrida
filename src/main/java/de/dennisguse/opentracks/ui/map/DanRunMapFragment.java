@@ -20,6 +20,7 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
+import org.osmdroid.views.overlay.TilesOverlay;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -41,8 +42,8 @@ public class DanRunMapFragment extends Fragment implements TrackDataHub.Listener
 
     private static final String ARG_RECORDING = "recording";
 
-    private static final int ROUTE_COLOR = Color.parseColor("#FFC000");
-    private static final int ROUTE_BORDER_COLOR = Color.parseColor("#0B1F3A");
+    private static final int ROUTE_COLOR = Color.parseColor("#FF6A13");
+    private static final int ROUTE_BORDER_COLOR = Color.parseColor("#C6FF00");
 
     private MapView mapView;
     private Polyline routeBorder;
@@ -84,6 +85,9 @@ public class DanRunMapFragment extends Fragment implements TrackDataHub.Listener
         mapView = new MapView(requireContext());
         mapView.setTileSource(TileSourceFactory.MAPNIK);
         mapView.setMultiTouchControls(true);
+        // Mapa escuro, combinando com o tema do DanRun
+        mapView.getOverlayManager().getTilesOverlay().setColorFilter(TilesOverlay.INVERTED_COLORS);
+        mapView.getZoomController().setVisibility(org.osmdroid.views.CustomZoomButtonsController.Visibility.NEVER);
         mapView.getController().setZoom(16.0);
         mapView.setOnTouchListener((v, event) -> {
             // Arrastar o mapa não deve trocar de aba.
@@ -98,7 +102,8 @@ public class DanRunMapFragment extends Fragment implements TrackDataHub.Listener
 
         routeBorder = new Polyline(mapView);
         routeBorder.getOutlinePaint().setColor(ROUTE_BORDER_COLOR);
-        routeBorder.getOutlinePaint().setStrokeWidth(16f);
+        routeBorder.getOutlinePaint().setStrokeWidth(18f);
+        routeBorder.getOutlinePaint().setAlpha(90);
         mapView.getOverlays().add(routeBorder);
 
         route = new Polyline(mapView);
