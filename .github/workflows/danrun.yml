@@ -34,7 +34,14 @@ jobs:
       - name: Montar o APK
         env:
           DANRUN_KEYSTORE_PASSWORD: ${{ secrets.DANRUN_KEYSTORE_PASSWORD }}
-        run: ./gradlew assembleDanrunRelease --stacktrace
+        run: |
+          set -o pipefail
+          ./gradlew assembleDanrunRelease 2>&1 | tee build.log
+
+      - name: Mostrar erros de montagem
+        if: failure()
+        run: |
+          grep -E "error:|ERROR:|e: |What went wrong|Caused by|FAILED|AAPT" -A4 build.log | head -60 | while IFS= read -r line; do echo "::error::$line"; done
 
       - name: Renomear APK
         run: |
